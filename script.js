@@ -1,5 +1,6 @@
-function solveSudoku() {
-  const puzzleInput = document.getElementById("inputPuzzle").value;
+function solveSudoku(puzzleParam) {
+  // const puzzleInput = document.getElementById("inputPuzzle").value;
+  const puzzleInput = puzzleParam;
   const solution = solve(puzzleInput);
   document.getElementById("solution").textContent =
     solution || "No solution found.";
@@ -85,6 +86,6 @@ function solve(puzzle) {
 const urlParams = new URLSearchParams(window.location.search);
 const puzzleParam = urlParams.get("puzzle");
 if (puzzleParam) {
-  document.getElementById("inputPuzzle").value = puzzleParam;
-  solveSudoku(); // Automatically solve and display the result
+  // document.getElementById("inputPuzzle").value = puzzleParam;
+  solveSudoku(puzzleParam); // Automatically solve and display the result
 }
