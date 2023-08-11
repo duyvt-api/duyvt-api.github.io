@@ -1,10 +1,15 @@
-function solveSudoku(puzzleParam) {
-  // const puzzleInput = document.getElementById("inputPuzzle").value;
-  const puzzleInput = puzzleParam;
-  const solution = solve(puzzleInput);
-  document.getElementById("solution").textContent =
-    solution || "No solution found.";
-}
+window.onload = function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const puzzleParam = urlParams.get("puzzle");
+  const originalPuzzle = puzzleParam;
+  if (puzzleParam) {
+    // Solve the puzzle
+    const solution = solve(puzzleParam);
+    // Display the solution or "No solution found."
+    document.getElementById("solution").textContent =
+      solution || originalPuzzle;
+  }
+};
 
 function solve(puzzle) {
   // Convert the input puzzle to a 2D array for easier manipulation
@@ -80,12 +85,4 @@ function solve(puzzle) {
   } else {
     return null; // No solution found
   }
-}
-
-// Get the puzzle from the URL parameter
-const urlParams = new URLSearchParams(window.location.search);
-const puzzleParam = urlParams.get("puzzle");
-if (puzzleParam) {
-  // document.getElementById("inputPuzzle").value = puzzleParam;
-  solveSudoku(puzzleParam); // Automatically solve and display the result
 }
